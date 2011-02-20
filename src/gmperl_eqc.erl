@@ -5,11 +5,12 @@
 -include_lib("eqc/include/eqc.hrl").
 
 mpz() ->
-	?LET(I, int(), begin
-					   MPZ = gmperl_nifs:mpz_init(),
-					   gmperl_nifs:mpz_set_si(MPZ, I),
-					   MPZ
-				   end).
+	?LET(I, largeint(), begin
+							MPZ = gmperl_nifs:mpz_init(),
+							IntStr = integer_to_list(I),
+							gmperl_nifs:mpz_set_str(MPZ, IntStr, 10),
+							MPZ
+						end).
 
 prop_add_assoc() ->
 	?FORALL({I1, I2, I3},
