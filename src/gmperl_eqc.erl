@@ -114,3 +114,18 @@ prop_cmp_trans() ->
 					 begin
 						 gmperl_nifs:mpz_cmp(I1, I3) =< 0
 					 end)).
+
+prop_lt_irreflexive() ->
+	?FORALL(I1, mpz(),
+			begin
+				gmperl_nifs:mpz_cmp(I1, I1) =:= 0
+			end).
+
+prop_lt_equiv() ->
+	?FORALL({I1, I2},
+			{mpz(), mpz()},
+			?IMPLIES(gmperl_nifs:mpz_cmp(I1, I2) =< 0 andalso
+					 gmperl_nifs:mpz_cmp(I2, I1) =< 0,
+					 begin
+						 gmperl_nifs:mpz_cmp(I1, I2) =:= 0
+					 end)).
