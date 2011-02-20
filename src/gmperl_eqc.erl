@@ -4,6 +4,13 @@
 
 -include_lib("eqc/include/eqc.hrl").
 
+
+%% TODO:
+%% Different bases
+%% Ensure some tests are done with small integers
+%% Constructor tests
+%% Work out coverage?
+
 mpz() ->
 	?LET(I, largeint(), begin
 							MPZ = gmperl_nifs:mpz_init(),
