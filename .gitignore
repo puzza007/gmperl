@@ -9,3 +9,4 @@ c_src/gmperl_mpq.*
 c_src/gmperl_mpf.*
 c_src/gmperl_nifs.c
 src/gmperl_nifs.erl
+.#*
