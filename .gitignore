@@ -10,3 +10,4 @@ c_src/gmperl_mpf.*
 c_src/gmperl_nifs.c
 src/gmperl_nifs.erl
 .#*
+ebin/current_counterexample.eqc

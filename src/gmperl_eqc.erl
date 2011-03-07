@@ -19,6 +19,15 @@ mpz() ->
 							MPZ
 						end).
 
+prop_set_str_badarg() ->
+	?FORALL(X, eqc_gen:oneof([binary(), bitstring(), bool(), char(), int(), largeint(), nat(), real()]),
+			  begin
+				  MPZ = gmperl_nifs:mpz_init(),
+				  case catch gmperl_nifs:mpz_set_str(MPZ, X, 10) of
+					  {'EXIT', {badarg, _}} -> true
+				  end
+			  end).
+
 prop_add_assoc() ->
 	?FORALL({I1, I2, I3},
 			{mpz(), mpz(), mpz()},
